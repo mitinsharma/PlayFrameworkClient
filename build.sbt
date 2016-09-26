@@ -1,4 +1,4 @@
-name := """bgormanly-lab4"""
+name := """brianmarist-lab4"""
 
 version := "1.0-SNAPSHOT"
 
