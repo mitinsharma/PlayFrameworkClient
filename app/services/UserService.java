@@ -20,6 +20,14 @@ public class UserService extends FdfCommonServices {
         return this.save(user, User.class);
     }
 
+    public void deleteUser(long userId) {
+        this.setDeleteFlag(User.class, userId, -1, -1);
+    }
+
+    public void undeleteUser(long userId) {
+        this.removeDeleteFlag(User.class, userId, -1, -1);
+    }
+
     public List<User> getAllUsers() {
         return this.getAllCurrent(User.class);
     }

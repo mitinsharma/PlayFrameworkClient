@@ -1,5 +1,6 @@
 package init;
 
+import com.fdflib.model.entity.FdfEntity;
 import com.fdflib.persistence.database.DatabaseUtil;
 import com.fdflib.service.FdfServices;
 import com.fdflib.util.FdfSettings;
@@ -104,6 +105,57 @@ public class DbInit {
             for(Role uRole: allUserRoles) {
                 Logger.info("UserRole: " + uRole.name);
             }
+        }
+
+        // delete some stuff
+        List<FdfEntity<Role>> facRoleResults = rs.getRoleByName("faculty");
+        Role facRole = null;
+        if(facRoleResults != null && facRoleResults.size() > 0 && facRoleResults.get(0).current != null) {
+            facRole = facRoleResults.get(0).current;
+        }
+
+        List<FdfEntity<User>> userResults = us.getUserByUsername("chevyssman");
+        User brian = null;
+        if(userResults != null && userResults.size() > 0 && userResults.get(0).current != null) {
+            brian = userResults.get(0).current;
+        }
+
+        // delete brians faculty role
+        if(brian != null && facRole != null) {
+            rs.deleteRoleForUser(brian.id, facRole.id);
+        }
+
+        // delete faculty role
+        if(facRole != null) {
+            rs.deleteRole(facRole.id);
+        }
+
+        // delete brian
+        if(brian!= null) {
+            us.deleteUser(brian.id);
+        }
+
+
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+        // undelete faculty role
+        if(facRole != null) {
+            rs.undeleteRole(facRole.id);
+        }
+
+        // undelete brian
+        if(brian!= null) {
+            us.undeleteUser(brian.id);
+        }
+
+        // undelete brians faculty role
+        if(brian != null && facRole != null) {
+            rs.undeleteRoleForUser(brian.id, facRole.id);
         }
 
 
