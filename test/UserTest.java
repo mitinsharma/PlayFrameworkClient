@@ -1,31 +1,5 @@
-import com.fdflib.model.state.FdfTenant;
-import com.google.gson.*;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-import models.User;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 import play.libs.Json;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Type;
-import java.util.Date;
-import java.util.HashMap;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.stream.Collectors;
 
 
 /**

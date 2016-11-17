@@ -1,5 +1,4 @@
 import com.google.inject.AbstractModule;
-import init.DbInit;
 import play.Logger;
 
 /**
@@ -20,7 +19,6 @@ public class Module extends AbstractModule {
 		System.out.println("Hello World!");
 
         Logger.info("Binding application start");
-        bind(DbInit.class).asEagerSingleton();
     }
 
 }

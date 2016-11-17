@@ -1,20 +1,28 @@
 package models;
-
 import com.fdflib.model.state.CommonState;
 
 /**
- * Created by brian.gormanly on 9/26/16.
+ * Created by Mitin on 10/26/2016.
  */
 public class User extends CommonState {
 
-    public String firstName;
-    public String lastName;
-    public String username;
-    public String email;
-    public String password;
+    public String firstName, lastName, userName, password;
 
-    public User() {
+    public User()
+    {
         super();
+    }
+
+    public User(String fname,String lname, String uname, String pass)
+    {
+        super();
+        firstName = fname;
+        lastName = lname;
+        userName = uname;
+        password = pass;
 
     }
+
+
+
 }
