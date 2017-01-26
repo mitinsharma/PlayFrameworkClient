@@ -42,38 +42,40 @@ public class SectionController extends GenericController {
         section.sectionNumber = sectionNumber;
         section.published = isPublished;
 
-        post("http://localhost:9000/saveSection", Json.toJson(section).toString());
+        String res = post("http://localhost:9000/saveSection", Json.toJson(section).toString());
 
-        return ok();
+        return ok(res);
     }
 
-    /*
-    public Result getAllUsers() {
-        UserService us = new UserService();
-        List<User> allUsers = us.getAllUsers();
-        return ok(Json.toJson(allUsers));
+    public Result getSections() {
+
+        String resSections = this.get("http://localhost:9000/getAllSections");
+        Logger.info("here are my sections: \n{}\n", resSections);
+
+        return ok(resSections);
     }
 
-    public Result getUserByUsername(String username) {
-        UserService us = new UserService();
-        List<FdfEntity<User>> users = us.getUserByUsername(username);
+    public Result getMySections(Integer uid) {
 
-        return ok(Json.toJson(users));
+        String resSections = this.get("http://localhost:9000/getMySections/"+uid);
+        Logger.info("here are my sections: \n{}\n", resSections);
+
+        return ok(resSections);
     }
 
-    @BodyParser.Of(BodyParser.Json.class)
-    public Result saveUser() {
-        JsonNode json = request().body().asJson();
+    //enrollMySelf
+    public Result enrollMySelf(Long studentId, Long sectionId) {
 
-        System.out.println("controller:  " + json);
+        String res = this.get("http://localhost:9000/enrollMySelf/"+studentId+"/"+sectionId);
 
-        Gson gson = new Gson();
-
-        User me = gson.fromJson(json.toString(), User.class);
-        UserService us = new UserService();
-        us.save(me);
-
-        return ok("success!");
+        return ok(""+res);
     }
-    */
+
+    //denrollMySelf
+    public Result denrollMySelf(Long studentId, Long sectionId) {
+
+        String res = this.get("http://localhost:9000/denrollMySelf/"+studentId+"/"+sectionId);
+
+        return ok(""+res);
+    }
 }

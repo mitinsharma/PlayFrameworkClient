@@ -28,13 +28,14 @@
 
 <script>
 function doSomething() {
+
     var name = $("#sectionName").val();
     var sectionPublished = $("#sectionPublished").val();
     var sectionNumber = $("#sectionNumber").val();
 
-    $.get( "http://localhost:8888/saveSection/" + name + "/" + sectionNumber + "/" + sectionPublished, function( data ) {
-        $( ".result" ).html( data );
-        alert( "Load was performed. you got! ");
+    $.get( "http://127.0.0.1:8888/saveSection/" + name + "/" + sectionNumber + "/" + sectionPublished, function( data ) {
+
+        alert( "Load was performed. you got! "+data);
     });
 }
 

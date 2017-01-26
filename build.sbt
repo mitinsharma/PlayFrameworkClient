@@ -1,4 +1,4 @@
-name := """brianmarist-lab4"""
+name := """msharma-ui"""
 
 version := "1.0-SNAPSHOT"
 

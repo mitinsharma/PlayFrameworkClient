@@ -4,8 +4,17 @@
 
 # An example controller showing a sample home page
 
+GET     /                                                   controllers.UserController.home()
+GET     /dashboard                                          controllers.UserController.dashboard()
+GET     /addSection                                         controllers.UserController.addSection()
+GET     /dropSection                                        controllers.UserController.dropSection()
+GET     /login/:username/:password                          controllers.UserController.login(username: String, password: String)
 GET     /sections                                           controllers.SectionController.section()
 GET     /saveSection/:name/:sectionNumber/:isPublished      controllers.SectionController.saveSection(name: String, sectionNumber: Int, isPublished: Boolean)
+GET     /getMySections/:id                                  controllers.SectionController.getMySections(id: Int)
+GET     /getSections                                        controllers.SectionController.getSections()
+GET     /enrollMySelf/:studentId/:sectionId                 controllers.SectionController.enrollMySelf(studentId: Long, sectionId: Long)
+GET     /denrollMySelf/:studentId/:sectionId                 controllers.SectionController.denrollMySelf(studentId: Long, sectionId: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
